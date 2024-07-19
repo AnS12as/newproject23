@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 def home(request):
@@ -10,5 +10,6 @@ def home(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('courses.urls')),
-    path('', home, name='home'),
+    path('users/', include('users.urls', namespace='users')),
+    path('', lambda request: HttpResponseRedirect('/api/courses/')),
 ]
