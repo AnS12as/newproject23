@@ -9,7 +9,6 @@ def home(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('users.urls')),
     path('api/', include('courses.urls')),
-    path('users/', include('users.urls', namespace='users')),
-    path('', lambda request: HttpResponseRedirect('/api/courses/')),
 ]
